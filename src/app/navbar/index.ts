@@ -1,6 +1,6 @@
 export class AppNavbar {
   currentState:string;
-  constructor($state) {
+  constructor() {
   }
 
   isActive(state: string) {
