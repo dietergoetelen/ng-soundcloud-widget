@@ -41,7 +41,7 @@ function scDirective(SC:any, $sce: angular.ISCEService, $parse) {
         });
 
         widget.bind(SC.Widget.Events.PLAY, () => {
-          widget.seekTo(28000);
+          //widget.seekTo(28000);
         });
       }
 
