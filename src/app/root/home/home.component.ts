@@ -24,22 +24,6 @@ export default {
         <th>Song</th>
         <th></th>
       </tr>
-<tr ng-repeat="song in $ctrl.songs">
-        <td>{{ song.url }}</td>
-        <td><button class="btn btn-sm btn-default" ng-click="$ctrl.playSong(song.url)">Play</button>
-      </tr>
-<tr ng-repeat="song in $ctrl.songs">
-        <td>{{ song.url }}</td>
-        <td><button class="btn btn-sm btn-default" ng-click="$ctrl.playSong(song.url)">Play</button>
-      </tr>
-<tr ng-repeat="song in $ctrl.songs">
-        <td>{{ song.url }}</td>
-        <td><button class="btn btn-sm btn-default" ng-click="$ctrl.playSong(song.url)">Play</button>
-      </tr>
-<tr ng-repeat="song in $ctrl.songs">
-        <td>{{ song.url }}</td>
-        <td><button class="btn btn-sm btn-default" ng-click="$ctrl.playSong(song.url)">Play</button>
-      </tr>
       <tr ng-repeat="song in $ctrl.songs">
         <td>{{ song.url }}</td>
         <td><button class="btn btn-sm btn-default" ng-click="$ctrl.playSong(song.url)">Play</button>
