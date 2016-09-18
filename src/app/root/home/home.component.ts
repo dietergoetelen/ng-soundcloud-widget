@@ -21,17 +21,14 @@ export default {
   template: `
     <table class="table">
       <tr>
-        <th>Song</th>
+        <th translate>SONG</th>
         <th></th>
       </tr>
       <tr ng-repeat="song in $ctrl.songs">
         <td>{{ song.url }}</td>
-        <td><button class="btn btn-sm btn-default" ng-click="$ctrl.playSong(song.url)">Play</button>
+        <td><button class="btn btn-sm btn-default" translate ng-click="$ctrl.playSong(song.url)">PLAY</button>
       </tr>
     </table>
-    <ul>
-      <li></li>
-    </ul>
   `,
   require: {
     parent: '^appRoot'
