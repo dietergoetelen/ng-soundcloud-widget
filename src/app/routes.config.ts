@@ -1,6 +1,6 @@
 routeConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 function routeConfig($stateProvider: ng.ui.IStateProvider, $urlRouterProvider: ng.ui.IUrlRouterProvider) {
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/home');
 
   $stateProvider
   .state('app', {
