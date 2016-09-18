@@ -56,7 +56,7 @@ export class AppController {
     return this.songs[this.songIndex];
   }
 
-  public onRegister(api) {
+  public onRegister(api: {onFinish: Function, playSong: ({url:string}) => void}) {
     this.api = api;
     api.onFinish(() => {
       api.playSong(this.getNextSong());
