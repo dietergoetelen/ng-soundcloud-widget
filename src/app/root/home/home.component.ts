@@ -8,7 +8,9 @@ export class HomeController {
   }
 
   $onInit() {
-    this.songs = this.parent.getSongs();
+    this.parent.newSongs(result => {
+      this.songs = result;
+    });
   }
 
   playSong(url: string) {

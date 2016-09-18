@@ -38,13 +38,26 @@ export class AppController {
       });
     });
 
-    this.songs = [
-      { url: 'http://api.soundcloud.com/tracks/251059513'},
-      { url: 'http://api.soundcloud.com/tracks/245673410'},
-      { url: 'http://api.soundcloud.com/tracks/263284333'},
-      { url: 'http://api.soundcloud.com/tracks/1848538'}
-    ];
+    ref.child('tracks').on('value', (snapshot) => {
+      let result = [];
+      let tracks = snapshot.val();
+      for (var key in tracks) {
+        result.push({
+          url: tracks[key].uri
 
+        })
+      }
+
+      this.$scope.$apply(() => {
+        this.newSongsSub(result);
+      });
+    })
+  }
+
+  newSongsSub = angular.noop;
+
+  public newSongs(cb = angular.noop) {
+    this.newSongsSub = cb;
   }
 
   public getSongs() {
@@ -79,30 +92,30 @@ export class AppController {
     /*
     this.api = api;
     api.onFinish(() => {
-      api.playSong(this.getNextSong());
-    });
     api.playSong(this.getNextSong());
-    */
-  }
+  });
+  api.playSong(this.getNextSong());
+  */
+}
 
-  public setLanguage(lang:string) {
-    this.translateService.setLanguage(lang);
-  }
+public setLanguage(lang:string) {
+  this.translateService.setLanguage(lang);
+}
 }
 
 export default {
   controller: AppController,
   template: `
   <div class="container">
-    <div class="row">
-      <app-header set-language="$ctrl.setLanguage(lang)" title="{{ $ctrl.title }}"></app-header>
-      <app-navbar current-state="{{ $ctrl.$state.current.name }}" states="$ctrl.states"></app-navbar>
-      <p><span translate>CURRENTLY_PLAYING</span> {{ $ctrl.songIndex }}</p>
-      <div ui-view></div>
-    </div>
+  <div class="row">
+  <app-header set-language="$ctrl.setLanguage(lang)" title="{{ $ctrl.title }}"></app-header>
+  <app-navbar current-state="{{ $ctrl.$state.current.name }}" states="$ctrl.states"></app-navbar>
+  <p><span translate>CURRENTLY_PLAYING</span> {{ $ctrl.songIndex }}</p>
+  <div ui-view></div>
+  </div>
   </div>
   <app-footer>
-    <sc-widget on-register-api="$ctrl.onRegister(api)"></sc-widget>
+  <sc-widget on-register-api="$ctrl.onRegister(api)"></sc-widget>
   </app-footer>
   `
 };
