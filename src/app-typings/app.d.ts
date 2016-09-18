@@ -7,3 +7,11 @@ declare var require: {
 interface Function {
   iid?: string;
 }
+
+declare namespace app {
+  interface ITranslation {
+    key:string;
+    value:string;
+    lang:string;
+  }
+}

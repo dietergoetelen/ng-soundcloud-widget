@@ -2,7 +2,7 @@
 export class TranslateService {
   private currentLanguage= this.preferred;
 
-  constructor(private translations: {key: string, lang: string, value: string}[],
+  constructor(private translations: app.ITranslation[],
               private preferred: string) {}
 
   setLanguage(language:string) {
@@ -31,17 +31,16 @@ export class TranslateService {
   }
 }
 TranslateService.iid = 'TranslateService';
-
 export class TranslateServiceProvider {
 
   private preferred : string = "en";
-  private translations: {key:string, lang:string, value:string}[];
+  private translations: app.ITranslation[];
 
   setPreferredLanguage(preferredLanguage:string) {
     this.preferred = preferredLanguage;
   }
 
-  setTranslations(translations: {key:string, lang:string, value:string}[]) {
+  setTranslations(translations: app.ITranslation[]) {
     this.translations= translations;
   }
 
@@ -50,7 +49,6 @@ export class TranslateServiceProvider {
   $get() {
     return new TranslateService(this.translations, this.preferred);
   }
-
 }
 
 TranslateServiceProvider.iid = "TranslateServiceProvider";
