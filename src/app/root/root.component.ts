@@ -1,5 +1,13 @@
 import {TranslateService} from '../util/translate.provider';
 
+let firebase:any = require('firebase');
+let config = {
+  databaseURL: 'https://rd-musify.firebaseio.com/'
+};
+
+firebase.initializeApp(config);
+let ref = firebase.database().ref();
+
 export class AppController {
   private title = 'Musify';
   private states = [
@@ -16,10 +24,20 @@ export class AppController {
   private songs: {url:string}[];
   private api;
 
-  static $inject = ['$state', TranslateService.iid];
-  constructor(private $state:ng.ui.IStateService, private translateService: TranslateService) {}
+  static $inject = ['$state', TranslateService.iid, '$firebaseObject', '$scope'];
+  constructor(private $state:ng.ui.IStateService, private translateService: TranslateService, private $firebaseObject, private $scope:ng.IScope) {}
 
+  isPlaying:boolean = false;
   $onInit() {
+    ref.child('playing').on('value',  (snapshot:any) => {
+      this.$scope.$apply(() => {
+        if (snapshot.val().currentTime === 0 || !this.isPlaying) {
+          this.isPlaying = true;
+          this.api.playSong({url: snapshot.val().uri, time: snapshot.val().currentTime});
+        }
+      });
+    });
+
     this.songs = [
       { url: 'http://api.soundcloud.com/tracks/251059513'},
       { url: 'http://api.soundcloud.com/tracks/245673410'},
@@ -58,10 +76,13 @@ export class AppController {
 
   public onRegister(api: {onFinish: Function, playSong: ({url:string}) => void}) {
     this.api = api;
+    /*
+    this.api = api;
     api.onFinish(() => {
       api.playSong(this.getNextSong());
     });
     api.playSong(this.getNextSong());
+    */
   }
 
   public setLanguage(lang:string) {

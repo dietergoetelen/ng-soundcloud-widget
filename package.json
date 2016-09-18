@@ -15,7 +15,9 @@
   "dependencies": {
     "angular": "^1.5.8",
     "angular-ui-router": "^1.0.0-beta.2",
+    "angularfire": "^2.0.2",
     "bootstrap": "^3.3.7",
+    "firebase": "^3.4.0",
     "typescript": "^2.0.2"
   },
   "devDependencies": {

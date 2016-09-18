@@ -31,6 +31,14 @@ function scDirective(SC:any, $sce: angular.ISCEService, $parse) {
       element[0].innerHTML = template;
     }
 
+    let onPlay = function (duration) {
+      return function (widget) {
+        widget.seekTo(duration);
+      }
+    }
+
+    let played;
+
     function playSong(song:any) {
       if (!widget || !widgetIframe) {
         initializeTemplate(song.url);
@@ -39,11 +47,16 @@ function scDirective(SC:any, $sce: angular.ISCEService, $parse) {
         widget.bind(SC.Widget.Events.FINISH, (...args) => {
           scope.$apply(onFinish);
         });
-
         widget.bind(SC.Widget.Events.PLAY, () => {
-          //widget.seekTo(28000);
+          console.log('play');
+          played(widget);
         });
       }
+
+      console.log('set play');
+
+      played = onPlay(song.time);
+
 
       widget.load(song.url, {
         callback: function() {
