@@ -1,12 +1,14 @@
+import {TranslateService} from '../util/translate.provider';
+
 export class AppController {
   private title = 'Musify';
   private states = [
     {
-      title: 'Home',
+      title: 'NAV_HOME',
       state: 'app.home'
     },
     {
-      title: 'About',
+      title: 'NAV_ABOUT',
       state: 'app.about'
     }
   ];
@@ -14,8 +16,8 @@ export class AppController {
   private songs: {url:string}[];
   private api;
 
-  static $inject = ['$state', '$timeout'];
-  constructor(private $state:ng.ui.IStateService, private $timeout: ng.ITimeoutService) {}
+  static $inject = ['$state', TranslateService.iid];
+  constructor(private $state:ng.ui.IStateService, private translateService: TranslateService) {}
 
   $onInit() {
     this.songs = [
@@ -61,6 +63,10 @@ export class AppController {
     });
     api.playSong(this.getNextSong());
   }
+
+  public setLanguage(lang:string) {
+    this.translateService.setLanguage(lang);
+  }
 }
 
 export default {
@@ -68,9 +74,9 @@ export default {
   template: `
   <div class="container">
     <div class="row">
-      <app-header title="{{ $ctrl.title }}"></app-header>
+      <app-header set-language="$ctrl.setLanguage(lang)" title="{{ $ctrl.title }}"></app-header>
       <app-navbar current-state="{{ $ctrl.$state.current.name }}" states="$ctrl.states"></app-navbar>
-      <p>Currently playing song nr: {{ $ctrl.songIndex }}</p>
+      <p><span translate>CURRENTLY_PLAYING</span> {{ $ctrl.songIndex }}</p>
       <div ui-view></div>
     </div>
   </div>

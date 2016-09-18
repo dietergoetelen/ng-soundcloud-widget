@@ -7,9 +7,11 @@ import appFooter from './footer';
 import appNavbar from './navbar';
 import routeConfig from './routes.config';
 import soundCloud from './soundcloud';
+import utilModule from './util';
 
 export default angular.module('app', [
   router,
+  utilModule.name,
   soundCloud.name,
   appComponent.name
 ])

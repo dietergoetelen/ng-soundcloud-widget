@@ -16,7 +16,7 @@ export default {
   },
   template: `
   <ul class="nav nav-tabs">
-    <li ng-class="{active: $ctrl.isActive(state.state)}" ng-repeat="state in $ctrl.states"><a ui-sref="{{state.state}}">{{state.title}}</a></li>
+    <li ng-class="{active: $ctrl.isActive(state.state)}" ng-repeat="state in $ctrl.states"><a ui-sref="{{state.state}}" translate>{{state.title}}</a></li>
   </ul>
   `
 }
