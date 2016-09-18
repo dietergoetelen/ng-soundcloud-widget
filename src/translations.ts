@@ -2,7 +2,7 @@ let translations: {key:string, lang:string, value:string}[] = [
   {key: 'TITLE', lang: 'nl', value: 'Titel'},
   {key: 'NAV_HOME', lang: 'nl', value: 'Start'},
   {key: 'NAV_ABOUT', lang: 'nl', value: 'Over ons'},
-  {key: 'SONG', lang: 'nl', value: 'Lied'},
+  //{key: 'SONG', lang: 'nl', value: 'Lied'},
   {key: 'PLAY', lang: 'nl', value: 'Speel'},
   {key: 'CURRENTLY_PLAYING', lang: 'nl', value: 'Momenteel speelt lied nummer:'},
   {key: 'TITLE', lang: 'en', value: 'Title'},
