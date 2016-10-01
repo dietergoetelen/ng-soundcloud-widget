@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "karma start karma.config.js",
     "build": "webpack",
     "build:prod": "webpack -p",
     "serve": "webpack-dev-server --content-base dist/ --inline",
