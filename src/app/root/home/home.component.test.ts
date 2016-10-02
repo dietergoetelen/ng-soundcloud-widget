@@ -1,7 +1,3 @@
-import 'angular';
-import 'angular-mocks';
-import 'app';
-
 import { expect } from 'chai';
 import { HomeController } from './home.component';
 import { AppController } from '../root.component';
