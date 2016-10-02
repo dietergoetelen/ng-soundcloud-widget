@@ -10,7 +10,8 @@ module.exports = {
     root: path.resolve('./src'),
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.js'],
     alias: {
-      decorators: path.resolve(__dirname, 'src', 'decorators', 'index.ts')
+      decorators: path.resolve(__dirname, 'src', 'decorators', 'index.ts'),
+      app: path.resolve(__dirname, 'src', 'app', 'index.ts')
     }
   },
   module: {

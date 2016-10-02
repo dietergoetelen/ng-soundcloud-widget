@@ -1,4 +1,5 @@
 import * as angular from 'angular';
+import 'angular-mocks';
 import router from 'angular-ui-router';
 
 import appComponent from './root';
