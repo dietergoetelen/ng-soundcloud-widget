@@ -19,7 +19,7 @@ module.exports = function (config) {
     reporters: ['progress'],
     port: 9876,
     colors: true,
-    logLevel: config.LOG_DEBUG,
+    logLevel: config.INFO,
     autoWatch: true,
     browsers: ['PhantomJS'],
     singleRun: false,
